@@ -1,0 +1,646 @@
+/* 
+----------------------------
+Header section
+----------------------------
+*/
+.header {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+
+	background-color: var(--primary-1);
+	height: var(--header-height);
+	padding: 0 4.8rem;
+}
+
+.logo {
+	display: block;
+	height: 2.4rem;
+}
+
+.main-nav-list {
+	display: flex;
+	align-items: center;
+	gap: 3.2rem;
+
+	list-style: none;
+}
+
+.main-nav-link:link,
+.main-nav-link:visited {
+	text-decoration: none;
+	color: var(--grey-4);
+	font-weight: 500;
+	font-size: 1.8rem;
+
+	transition: var(--transition);
+}
+.main-nav-link:hover,
+.main-nav-link:active {
+	color: var(--primary-4);
+}
+
+/* two classes with and without a blank space is different.
+With: descendant class
+Without: apply to emelemts that have these two classes together */
+.main-nav-link.nav-cta:link,
+.main-nav-link.nav-cta:visited {
+	padding: 1.2rem 2.4rem;
+	border-radius: var(--radius);
+	background-color: var(--primary-3);
+	color: var(--white);
+}
+.main-nav-link.nav-cta:hover,
+.main-nav-link.nav-cta:active {
+	background-color: var(--primary-4);
+}
+
+/* 
+----------------------------
+Hero section
+----------------------------
+*/
+.section-hero {
+	height: calc(100vh - var(--header-height));
+	background-color: var(--primary-1);
+	padding: 4.8rem 0 9.6rem 0;
+}
+
+.hero {
+	display: grid;
+	grid-template-columns: 1fr 1fr;
+	align-items: center;
+	gap: 9.6rem;
+
+	max-width: 130rem;
+	margin: 0 auto;
+	padding: 0 3.2rem;
+}
+
+.hero-description {
+	font-size: 2rem;
+	line-height: 1.5;
+	margin-bottom: 4.8rem;
+}
+
+.hero-img {
+	/* make sure the image contains 100% of hero-img-box, which is a grid column of hero, so it only take 50% of the content area */
+	width: 100%;
+}
+
+.delivered-meals {
+	display: flex;
+	align-items: center;
+	gap: 1.6rem;
+
+	margin-top: 8rem;
+}
+
+.delivered-imgs {
+	display: flex;
+}
+
+.delivered-imgs img {
+	height: 3.6rem;
+	width: 3.6rem;
+	border-radius: 50%;
+	border: 2px solid var(--primary-1);
+
+	margin-right: -1.2rem;
+}
+.delivered-imgs img:last-child {
+	margin-right: 0;
+}
+
+.delivered-text {
+	font-size: 1.6rem;
+	font-weight: 600;
+}
+.delivered-text span {
+	color: var(--primary-4);
+	font-weight: 700;
+}
+
+/* 
+----------------------------
+Featured in section
+----------------------------
+*/
+.section-featured-in {
+	padding: 4.8rem 0 3.2rem 0;
+}
+
+.heading-featured-in {
+	font-size: 1.4rem;
+	text-transform: uppercase;
+	letter-spacing: 0.75px;
+	font-weight: 500;
+	text-align: center;
+	margin-bottom: 2.4rem;
+	color: var(--grey-4);
+}
+
+.featured-in-logos {
+	display: flex;
+	justify-content: space-around;
+}
+
+.featured-in-logos img {
+	height: 3.2rem;
+	filter: brightness(0);
+	opacity: 50%;
+}
+
+/* 
+----------------------------
+How it works section
+----------------------------
+*/
+.section-how {
+	padding: 9.6rem 0;
+}
+
+.step-number {
+	font-size: 8.6rem;
+	font-weight: 600;
+	color: var(--grey-2);
+	margin-bottom: 1.2rem;
+}
+
+.step-description {
+	font-size: 1.8rem;
+	line-height: 1.8;
+}
+
+.step-img-box {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+
+	position: relative;
+}
+.step-img {
+	width: 35%;
+}
+
+.step-img-box::before {
+	content: '';
+	display: block;
+	width: 60%;
+	/* cannot define height, since it is a text content */
+	padding-bottom: 60%;
+
+	background-color: var(--primary-2);
+	border-radius: 50%;
+	/* need responsive */
+	box-shadow: inset 0 0 0 30px var(--primary-1);
+
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+
+	z-index: -1;
+}
+
+/* 
+----------------------------
+Meals section
+----------------------------
+*/
+.section-meals {
+	padding: 9.6rem 0;
+}
+
+.meal {
+	box-shadow: var(--shadow);
+	border-radius: var(--radius);
+	/* when content is outside of the container, how should it present? In this case, the image's top square corner will be hidden*/
+	overflow: hidden;
+
+	transition: var(--transition-long);
+}
+
+.meal:hover {
+	box-shadow: 0 2.4rem 4.8rem 2rem rgba(0, 0, 0, 0.07);
+	transform: translate(0, -1.5rem);
+}
+
+.meal-img {
+	width: 100%;
+}
+
+.meal-text {
+	padding: 2.4rem 3.6rem 4.2rem 3.6rem;
+}
+
+.meal-tags {
+	display: flex;
+	gap: 0.4rem;
+
+	margin-bottom: 1.2rem;
+}
+
+.tag {
+	display: inline-block;
+	padding: 0.6rem 1.2rem;
+	font-size: 1.2rem;
+	text-transform: uppercase;
+	color: var(--grey-3);
+	border-radius: 100px;
+	font-weight: 600;
+}
+.tag--vegetarian {
+	background-color: #22c55e;
+}
+.tag--vegan {
+	background-color: #a3e635;
+}
+.tag--paleo {
+	background-color: #facc15;
+}
+
+.meal-title {
+	font-size: 2.4rem;
+	color: var(--grey-4);
+	font-weight: 600;
+	margin-bottom: 3.2rem;
+}
+
+.meal-attributes {
+	list-style: none;
+	display: flex;
+	flex-direction: column;
+	gap: 2rem;
+}
+.meal-attribute {
+	display: flex;
+	align-items: center;
+	gap: 1.6rem;
+
+	font-size: 1.8rem;
+}
+
+.meal-icon {
+	height: 2.4rem;
+	width: 2.4rem;
+	color: var(--primary-4);
+}
+
+.all-recipes {
+	text-align: center;
+	/* why put the font-size here but not in the link class?
+    Because we may use link class somewhere else, and the font-size there could be different */
+	font-size: 1.8rem;
+}
+
+/* 
+----------------------------
+Testimonials section
+----------------------------
+*/
+.section-testimonials {
+	display: grid;
+	grid-template-columns: 55fr 45fr;
+
+	background-color: var(--primary-1);
+	padding: 1rem;
+}
+
+.testimonials-container {
+	padding: 0 10rem;
+}
+
+.testimonials {
+	display: grid;
+	grid-template-columns: repeat(2, 1fr);
+	gap: 4.8rem;
+}
+
+.testimonial-img {
+	width: 7rem;
+	height: 7rem;
+	border-radius: 50%;
+	margin-bottom: 1.6rem;
+}
+
+.testimonial-text {
+	color: var(--grey-4);
+	font-size: 1.8rem;
+	line-height: 1.8;
+	margin-bottom: 1.2rem;
+}
+
+.testimonial-name {
+	font-size: 1.6rem;
+	color: var(--grey-3);
+}
+
+.gallery {
+	display: grid;
+	grid-template-columns: repeat(3, 1fr);
+	gap: 1rem;
+}
+
+.gallery-item {
+	overflow: hidden;
+}
+
+.gallery-item img {
+	width: 100%;
+
+	transition: var(--transition-long);
+}
+
+.gallery-item img:hover {
+	transform: scale(1.2);
+}
+
+/* 
+----------------------------
+Pricing section
+----------------------------
+*/
+.section-pricing {
+	padding: 9.6rem 0;
+}
+
+.pricing-plan {
+	background-color: var(--primary-1);
+	border-radius: var(--radius);
+	padding: 4.8rem;
+	width: 78%;
+
+	border: 2px solid var(--primary-1);
+}
+.pricing-plan--starter {
+	justify-self: end;
+	background-color: var(--white);
+}
+
+.plan-header {
+	text-align: center;
+	margin-bottom: 4.8rem;
+}
+
+.plan-name {
+	color: var(--primary-4);
+	font-weight: 600;
+	font-size: 2rem;
+	text-transform: uppercase;
+	letter-spacing: 0.75;
+	margin-bottom: 3.2rem;
+}
+
+.plan-price {
+	font-size: 6.2rem;
+	font-weight: 600;
+	color: var(--grey-4);
+	margin-bottom: 3.2rem;
+}
+.plan-price span {
+	font-size: 3rem;
+	font-weight: 500;
+	margin-right: 0.8rem;
+}
+
+.plan-text {
+	font-size: 1.6rem;
+	line-height: 1.6;
+}
+
+.plan-signup {
+	text-align: center;
+	margin-top: 4.8rem;
+}
+
+.pricing-plan--complete {
+	position: relative;
+
+	overflow: hidden;
+}
+.pricing-plan--complete::after {
+	content: 'best value';
+	text-transform: uppercase;
+
+	position: absolute;
+	top: 5%;
+	right: -10%;
+
+	font-size: 1.4rem;
+	font-weight: 700;
+	color: var(--grey-4);
+	background-color: #facc15;
+	padding: 1rem 4rem;
+
+	transform: rotate(45deg);
+}
+
+.plan-support {
+	font-size: 1.6rem;
+	line-height: 1.8;
+}
+
+.feature-icon {
+	color: var(--primary-3);
+	height: 3rem;
+	width: 3rem;
+	background-color: var(--primary-1);
+	margin-bottom: 3.2rem;
+	padding: 1.6rem;
+	border-radius: 50%;
+}
+
+.feature-title {
+	font-size: 2.4rem;
+	font-weight: 700;
+	color: var(--grey-4);
+	margin-bottom: 1.6rem;
+}
+
+.feature-text {
+	font-size: 1.6rem;
+	line-height: 1.8;
+}
+
+/* 
+----------------------------
+CTA section
+----------------------------
+*/
+.section-cta {
+	padding: 9.6rem 0;
+}
+
+.cta {
+	display: grid;
+	grid-template-columns: 2fr 1fr;
+
+	box-shadow: var(--shadow);
+	border-radius: var(--radius);
+	background-image: var(--background-image);
+
+	overflow: hidden;
+}
+
+.cta-img-box {
+	background-image: linear-gradient(to right bottom, rgba(233, 139, 56, 0.35), rgba(230, 125, 34, 0.35)), url(../img/eating.jpg);
+	/* use the image to cover the whole element */
+	background-size: cover;
+	background-position: center;
+}
+
+.cta-input-box {
+	padding: 4.8rem 6.4rem 6.4rem 6.4rem;
+	color: #2e1907;
+}
+
+.cta-input-box .heading-secondary {
+	color: inherit;
+	margin-bottom: 3.2rem;
+}
+
+.cta-text {
+	font-size: 1.6rem;
+	line-height: 1.6;
+	margin-bottom: 4.8rem;
+}
+
+.cta-form {
+	display: grid;
+	grid-template-columns: 1fr 1fr;
+	column-gap: 3.2rem;
+	row-gap: 2.4rem;
+}
+
+.cta-form label {
+	display: block;
+	font-size: 1.6rem;
+	font-weight: 500;
+	margin-bottom: 1.2rem;
+}
+
+.cta-form input,
+.cta-form select {
+	width: 100%;
+	padding: 1.2rem;
+	font-size: 1.8rem;
+	color: inherit;
+	font-family: inherit;
+	border: none;
+	background-color: var(--primary-1);
+	border-radius: var(--radius);
+	box-shadow: var(--shadow);
+}
+.cta-form input::placeholder {
+	color: #bbb;
+}
+
+.btn--form {
+	background-color: #2e1907;
+	color: var(--primary-1);
+	align-self: end;
+	/* override the padding in .btn style */
+	padding: 1.2rem;
+}
+.btn--form:hover {
+	background-color: var(--primary-1);
+	color: #2e1907;
+}
+
+.cta *:focus {
+	outline: none;
+	box-shadow: 0 0 0 5px rgba(255, 247, 237, 0.5);
+}
+
+/* 
+----------------------------
+Footer
+----------------------------
+*/
+.footer {
+	padding: 12.8rem 0;
+	border-top: 1px solid #eee;
+}
+
+.grid--footer {
+	grid-template-columns: 1.5fr 1.5fr 1fr 1fr 1fr;
+}
+
+.footer-heading {
+	color: var(--grey-4);
+	font-size: 1.8rem;
+	font-weight: 500;
+	margin-bottom: 4rem;
+}
+
+.logo-col,
+.addr-col {
+	display: flex;
+	flex-direction: column;
+}
+
+.footer-nav {
+	list-style: none;
+	display: flex;
+	flex-direction: column;
+	gap: 2.4rem;
+}
+
+.logo-footer {
+	margin-bottom: 3.4rem;
+}
+
+.social-links {
+	list-style: none;
+	display: flex;
+	gap: 1.8rem;
+}
+
+.copyright {
+	font-size: 1.4rem;
+	line-height: 1.4;
+	color: var(--grey-3);
+	/* automatically push the copyright to the end of column */
+	margin-top: auto;
+}
+
+.contacts {
+	/* address's font-style is italic by default */
+	font-style: normal;
+	font-size: 1.6rem;
+	line-height: 1.6;
+	margin-top: auto;
+}
+
+.tel-email {
+	margin-top: 1.2rem;
+}
+
+.social-links a:link,
+.social-links a:visited,
+.contacts a:link,
+.contacts a:visited,
+.footer-nav a:link,
+.footer-nav a:visited {
+	text-decoration: none;
+	font-size: 2.4rem;
+	color: var(--grey-3);
+	transition: var(--transition);
+}
+.social-links a:hover,
+.social-links a:active,
+.contacts a:hover,
+.contacts a:active,
+.footer-nav a:hover,
+.footer-nav a:active {
+	color: var(--grey-4);
+	text-shadow: 0 2px 2px rgba(0, 0, 0, 0.07);
+}
+
+.contacts a:link,
+.contacts a:visited,
+.footer-nav a:link,
+.footer-nav a:visited {
+	font-size: 1.6rem;
+}

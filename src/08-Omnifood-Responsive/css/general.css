@@ -1,0 +1,254 @@
+@import url('https://fonts.googleapis.com/css2?family=Rubik:wght@400;500;600;700&display=swap');
+/* 
+TYPOGRAPHY SYSTEM 
+
+Font size (px)
+10 / 12 / 14 / 16 / 18 / 20 / 24 / 30 / 36 / 44 / 52 / 62 / 74 / 86 / 98
+
+Spacing (px)
+2 / 4 / 8 / 12 / 16 / 24 / 32 / 48 / 64 / 80 / 96 / 128
+*/
+
+* {
+	padding: 0;
+	margin: 0;
+	box-sizing: border-box;
+}
+
+*:focus {
+	outline: none;
+	box-shadow: 0 0 0 5px rgba(234, 90, 12, 0.5);
+}
+
+html {
+	/* user's browser font-size setting */
+	font-size: 62.5%;
+
+	overflow-x: hidden;
+}
+
+body {
+	font-family: 'Rubik', sans-serif;
+	line-height: 1;
+	font-weight: 400;
+	color: var(--grey-3);
+
+	/* Because we want the nav bar on mobile devices stay at the right of the view port by default, then wehn user click, the nav bar will slide into viewport. 
+	But when we set the nav bar at the right, it will take some physical space. This makes the view port can be scrolled on x-direction. */
+	/* But it only works when nothing's position is absolute to body. */
+	overflow-x: hidden;
+}
+
+/* 
+----------------------------
+variables
+----------------------------
+*/
+:root {
+	/* COLORS  */
+
+	/* primary */
+	--primary-1: #fff7ed;
+	--primary-2: #fed7aa;
+	--primary-3: #e67e22;
+	--primary-4: #ea580c;
+
+	/* grey */
+	--grey-1: #f9fafb;
+	--grey-2: #d1d5db;
+	--grey-3: #4b5563;
+	--grey-4: #111827;
+
+	/* rest */
+	--black: rgb(3, 3, 3);
+	--white: #fff;
+
+	--red-light: #f8d7da;
+	--red-dark: #842029;
+
+	--green-light: #d1e7dd;
+	--green-dark: #0f5132;
+
+	/* others */
+	--header-height: 8rem;
+	--shadow: 0 2.4rem 4.8rem rgba(0, 0, 0, 0.07);
+	--background-image: linear-gradient(to right bottom, #e98b38, var(--primary-3));
+	--radius: 10px;
+	--transition: 0.3s ease-in-out all;
+	--transition-long: 0.4s ease-in-out all;
+	--transition-longer: 0.9s ease-in-out all;
+}
+
+/* 
+----------------------------
+General reusable components
+----------------------------
+*/
+.heading-primary,
+.heading-secondary,
+.heading-tertiary {
+	font-weight: 700;
+	color: var(--grey-4);
+	letter-spacing: -1px;
+}
+.heading-primary {
+	font-size: 5.2rem;
+	line-height: 1.05;
+	margin-bottom: 3.2rem;
+}
+.heading-secondary {
+	font-size: 4.4rem;
+	line-height: 1.2;
+	margin-bottom: 9.6rem;
+}
+.heading-tertiary {
+	font-size: 3rem;
+	line-height: 1.2;
+	margin-bottom: 3.2rem;
+}
+.subheading {
+	display: block;
+	font-size: 1.6rem;
+	font-weight: 500;
+	color: var(--primary-4);
+	text-transform: uppercase;
+	margin-bottom: 1.6rem;
+	letter-spacing: 1px;
+}
+
+.btn,
+.btn:link,
+.btn:visited {
+	display: inline-block;
+	text-decoration: none;
+	font-size: 2rem;
+	padding: 1.6rem 3.2rem;
+	border-radius: 10px;
+	font-weight: 600;
+
+	/* will only applies to button element, but not <a> element with .btn class */
+	border: none;
+	cursor: pointer;
+	font-family: inherit;
+
+	/* put transition on original 'state' */
+	transition: var(--transition);
+}
+
+.btn--full:link,
+.btn--full:visited {
+	background-color: var(--primary-3);
+	color: var(--white);
+}
+.btn--full:hover,
+.btn--full:active {
+	background-color: var(--primary-4);
+}
+
+.btn--outline:link,
+.btn--outline:visited {
+	background-color: var(--white);
+	color: var(--grey-4);
+}
+.btn--outline:hover,
+.btn--outline:active {
+	background-color: var(--primary-1);
+	/* add border inside */
+	box-shadow: inset 0 0 0 3px var(--white);
+}
+
+.link:link,
+.link:visited {
+	display: inline-block;
+	color: var(--primary-3);
+	text-decoration: none;
+	border-bottom: 1px solid currentColor;
+
+	/* add some space between text and bottom border */
+	padding-bottom: 3px;
+
+	transition: var(--transition);
+}
+.link:hover,
+.link:active {
+	color: var(--primary-4);
+	/* why use transparent but not none? because if use none, then the bottom-border will be removed when hovering, which will reduce 1px from the section height, this change could be noticed in the whole page */
+	border-bottom: 1px solid transparent;
+}
+
+.container {
+	/* 1140px is a convention */
+	max-width: 114rem;
+	padding: 0 3.2rem;
+	margin: 0 auto;
+}
+
+.grid {
+	display: grid;
+	column-gap: 6.4rem;
+	row-gap: 9.6rem;
+}
+/* if a grid container is not the last child, then add a margin bottom
+This is for pricing section. */
+.grid:not(:last-child) {
+	margin-bottom: 4rem;
+}
+
+.grid--2-cols {
+	grid-template-columns: repeat(2, 1fr);
+}
+.grid--3-cols {
+	grid-template-columns: repeat(3, 1fr);
+}
+.grid--4-cols {
+	grid-template-columns: repeat(4, 1fr);
+}
+.grid--5-cols {
+	grid-template-columns: repeat(5, 1fr);
+}
+
+.grid--center-ver {
+	align-items: center;
+}
+
+strong {
+	font-weight: 500;
+}
+
+.list {
+	display: flex;
+	flex-direction: column;
+	gap: 1.6rem;
+
+	list-style: none;
+}
+
+.list li {
+	display: flex;
+	align-items: center;
+	gap: 1.6rem;
+
+	font-size: 1.8rem;
+	line-height: 1.2;
+}
+
+.list-icon {
+	font-size: 3rem;
+	color: var(--primary-4);
+}
+
+/* HELPER CLASSES */
+.margin-right-sm {
+	/* when use a helper class, we want to make sure that this style applies, so make it important */
+	margin-right: 1.6rem !important;
+}
+.margin-bottom-md {
+	margin-bottom: 4.8rem !important;
+}
+.margin-bottom-lg {
+	margin-bottom: 8rem !important;
+}
+
+.center-text {
+	text-align: center;
+}
